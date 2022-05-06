@@ -1,7 +1,6 @@
 module github.com/ipfs/go-ds-rpc-client
 
 require (
-	github.com/davecgh/go-spew v1.1.1
 	github.com/ethereum/go-ethereum v1.10.17
 	github.com/ipfs/go-datastore v0.5.1
 	github.com/ipfs/go-log/v2 v2.5.0
