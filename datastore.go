@@ -66,30 +66,37 @@ func (d *Datastore) Query(ctx context.Context, q dsq.Query) (dsq.Results, error)
 	panic("not implemented")
 }
 
-//// Datastore.Write iface
+// Datastore.Write iface
 
 func (d *Datastore) Put(ctx context.Context, key ds.Key, value []byte) error {
 	return d.client.Call(nil, "rpcdatastore_put", key, value)
 }
 
 func (d *Datastore) Delete(ctx context.Context, key ds.Key) error {
-	panic("not implemented")
+	return d.client.Call(nil, "rpcdatastore_delete", key)
 }
 
-//// Datastore iface
+// Datastore iface
 
 func (d *Datastore) Sync(ctx context.Context, prefix ds.Key) error {
-	panic("not implemented")
+	return d.client.Call(nil, "rpcdatastore_sync", prefix)
 }
 
 func (d *Datastore) Close() error {
-	return nil
+	return d.client.Call(nil, "rpcdatastore_close")
 }
 
 //// Batching iface
 
 func (d *Datastore) Batch(ctx context.Context) (ds.Batch, error) {
-	panic("not implemented")
+	//TODO: not sure if serialisation works for Batch
+	var resp ds.Batch
+	err := d.client.Call(&resp, "rpcdatastore_batch")
+	if err != nil {
+		return resp, err
+	}
+
+	return resp, nil
 }
 
 ////func (d *Datastore) PutWithTTL(ctx context.Context, key ds.Key, value []byte, ttl time.Duration) error {
