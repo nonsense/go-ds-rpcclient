@@ -1,4 +1,4 @@
-module github.com/ipfs/go-ds-rpc-client
+module github.com/nonsense/go-ds-rpcclient
 
 require (
 	github.com/ethereum/go-ethereum v1.10.17
