@@ -1,5 +1,7 @@
 module github.com/nonsense/go-ds-rpcclient
 
+replace github.com/ethereum/go-ethereum => ../../ethereum/go-ethereum
+
 require (
 	github.com/ethereum/go-ethereum v1.10.17
 	github.com/ipfs/go-datastore v0.5.1
@@ -21,7 +23,7 @@ require (
 	go.uber.org/atomic v1.7.0 // indirect
 	go.uber.org/multierr v1.6.0 // indirect
 	go.uber.org/zap v1.19.1 // indirect
-	golang.org/x/crypto v0.0.0-20210322153248-0c34fe9e7dc2 // indirect
+	golang.org/x/crypto v0.0.0-20210921155107-089bfa567519 // indirect
 	golang.org/x/sys v0.0.0-20211216021012-1d35b9e2eb4e // indirect
 	gopkg.in/natefinch/npipe.v2 v2.0.0-20160621034901-c1b8fa8bdcce // indirect
 )
