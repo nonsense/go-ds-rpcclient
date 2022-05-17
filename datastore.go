@@ -63,7 +63,15 @@ func (d *Datastore) GetSize(ctx context.Context, key ds.Key) (size int, err erro
 }
 
 func (d *Datastore) Query(ctx context.Context, q dsq.Query) (dsq.Results, error) {
-	panic("not implemented")
+	var entries []dsq.Entry
+	err := d.client.Call(&entries, "rpcdatastore_query", q)
+	if err != nil {
+		return nil, err
+	}
+
+	results := dsq.ResultsWithEntries(q, entries)
+
+	return results, nil
 }
 
 // Datastore.Write iface
